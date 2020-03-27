@@ -1,10 +1,10 @@
 module.exports = (req, res) => {
     const start = new Date('March 24, 2020 00:00:00');
     const end = new Date('April 07, 2020 00:00:00');
-    const now = Date.now();
+    const now = new Date();
 
-    const length = end - start;
-    const elapsed = length - (end - now);
+    const length = end.getTime() - start.getTime();
+    const elapsed = length - (end.getTime() - now.getTime());
     const progress = Math.round(elapsed / length * 100);
 
     const titleFrame = {
