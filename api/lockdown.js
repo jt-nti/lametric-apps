@@ -13,11 +13,43 @@ module.exports = (req, res) => {
         index: null
     };
 
-    const dayFrame = {
-        text: 'Wed',
-        icon: 'i1324',
-        index: null
-    };
+    const dayFrames = [
+        {
+            text: 'Sunday',
+            icon: 'i8953',
+            index: null
+        },
+        {
+            text: 'Monday',
+            icon: 'i1489',
+            index: null
+        },
+        {
+            text: 'Tuesday',
+            icon: 'i1489',
+            index: null
+        },
+        {
+            text: 'Wed',
+            icon: 'i1324',
+            index: null
+        },
+        {
+            text: 'Thursday',
+            icon: 'i2722',
+            index: null
+        },
+        {
+            text: 'Friday',
+            icon: 'i8145',
+            index: null
+        },
+        {
+            text: 'Saturday',
+            icon: 'i6916',
+            index: null
+        }
+    ];
 
     const progressFrame = {
         goalData: {
@@ -39,15 +71,20 @@ module.exports = (req, res) => {
             lametricResponse.frames.push(titleFrame);
         }
         if (req.query.display.includes('Day')) {
-            lametricResponse.frames.push(dayFrame);
+            // TODO worry about daylight savings?
+            const day = now.getUTCDay();
+            lametricResponse.frames.push(dayFrames[day]);
         }
         if (req.query.display.includes('Progress')) {
             lametricResponse.frames.push(progressFrame);
         }
-    } else {
+    }
+    
+    if (lametricResponse.frames.length < 1) {
         lametricResponse.frames.push(progressFrame);
     }
 
+    // TODO should the index be fixed?
     lametricResponse.frames.forEach(function(frame, index){
         frame.index = index;
     });
