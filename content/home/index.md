@@ -1,5 +1,5 @@
 ---
-title: "Lametic Apps"
+title: "LaMetic Apps"
 headless: true
 ---
 

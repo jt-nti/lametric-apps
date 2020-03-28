@@ -8,7 +8,7 @@ module.exports = (req, res) => {
     const progress = Math.round(elapsed / length * 100);
 
     const titleFrame = {
-        text: 'Lockdown',
+        text: 'UK Lockdown',
         icon: 'a36057',
         index: null
     };
@@ -21,12 +21,12 @@ module.exports = (req, res) => {
         },
         {
             text: 'Monday',
-            icon: 'i1489',
+            icon: 'a36057',
             index: null
         },
         {
             text: 'Tuesday',
-            icon: 'i1489',
+            icon: 'a36057',
             index: null
         },
         {
@@ -35,7 +35,7 @@ module.exports = (req, res) => {
             index: null
         },
         {
-            text: 'Thursday',
+            text: 'Thurs',
             icon: 'i2722',
             index: null
         },
@@ -45,7 +45,7 @@ module.exports = (req, res) => {
             index: null
         },
         {
-            text: 'Saturday',
+            text: 'Sat',
             icon: 'i6916',
             index: null
         }
