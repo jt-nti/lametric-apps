@@ -21,12 +21,12 @@ module.exports = (req, res) => {
         },
         {
             text: 'Monday',
-            icon: 'a36057',
+            icon: 'i36139',
             index: null
         },
         {
             text: 'Tuesday',
-            icon: 'a36057',
+            icon: 'i36140',
             index: null
         },
         {
