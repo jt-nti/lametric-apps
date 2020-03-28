@@ -1,0 +1,58 @@
+baseURL = "http://example.org/"
+languageCode = "en-gb"
+title = "Lametric Apps"
+theme = "introduction"
+DefaultContentLanguage = "en"
+
+[params]
+    themeStyle = "light"
+    favicon = "/img/fav.ico"
+    showRSSButton = false
+    fadeIn = false
+    fadeInIndex = false
+    dateFormat = "Jan 2, 2006"
+    # email = "email@example.com"
+    # customCSS = ["foo.css"]
+
+    # Configure the home page
+    [params.home]
+        introHeight = "medium" # Input either "medium" or "large" or "fullheight"
+        showLatest = false
+        showAllPosts = false
+        numberOfProjectsToShow = 0
+
+        localTime = true
+        timeZone = "Europe/London"
+        timeFormat = "h:mm A"
+    [params.projects]
+        useTwoColumns = false
+
+    # Share buttons on blog post pages
+    [params.share]
+        twitter                  = false
+        facebook                 = false
+        googlePlus               = false
+        pinterest                = false
+
+    # Social icons appear in introduction and contact section. Add as many more as you like.
+    # Icon pack "fab" includes social network icons, see: https://fontawesome.com/icons?d=gallery&s=brands&m=free
+    # Icon pack "fas" includes solid style icons, see: https://fontawesome.com/icons?d=gallery&s=solid&m=free
+    [[params.social]]
+        url   = "https://twitter.com/jtonline"
+        icon  = "twitter" # icon name without the 'fa-'
+        icon_pack = "fab"
+
+# If you don't want to use the default menu, you can define one by yourself
+# [[menu.main]]
+#     name    = "Home"
+#     url     = "/"
+#     weight  = 0
+# [[menu.main]]
+#     name    = "Blog"
+#     url     = "/blog/"
+#     weight  = 1
+
+# We only use tag as a taxonomies
+# You can add more by yourself
+[taxonomies]
+  tag = "tags"
