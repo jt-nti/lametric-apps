@@ -5,7 +5,8 @@ module.exports = (req, res) => {
 
     const length = end.getTime() - start.getTime();
     const elapsed = length - (end.getTime() - now.getTime());
-    const progress = Math.round(elapsed / length * 100);
+    const progress = Math.min(100, Math.round(elapsed / length * 100));
+    const days = Math.trunc(elapsed / 86400000);
 
     const titleFrame = {
         text: 'UK Lockdown',
@@ -62,6 +63,12 @@ module.exports = (req, res) => {
         index: null
     };
 
+    const totalFrame = {
+        text: `Day ${days}`,
+        icon: 'a36057',
+        index: null
+    };
+
     const lametricResponse = {
         frames: []
     };
@@ -77,6 +84,9 @@ module.exports = (req, res) => {
         }
         if (req.query.display.includes('Progress')) {
             lametricResponse.frames.push(progressFrame);
+        }
+        if (req.query.display.includes('Total')) {
+            lametricResponse.frames.push(totalFrame);
         }
     }
     
