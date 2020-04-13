@@ -1,6 +1,6 @@
 module.exports = (req, res) => {
     const start = new Date('March 24, 2020 00:00:00');
-    const end = new Date('April 14, 2020 00:00:00');
+    const end = new Date('April 17, 2020 00:00:00');
     const now = new Date();
 
     const length = end.getTime() - start.getTime();
