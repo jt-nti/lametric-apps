@@ -5,7 +5,7 @@ module.exports = (req, res) => {
 
     const length = end.getTime() - start.getTime();
     const elapsed = length - (end.getTime() - now.getTime());
-    const progress = Math.min(100, Math.round(elapsed / length * 100));
+    const progress = Math.min(99, Math.round(elapsed / length * 100));
     const days = Math.ceil(elapsed / 86400000);
 
     const titleFrame = {
