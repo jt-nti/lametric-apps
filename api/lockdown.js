@@ -6,7 +6,8 @@ module.exports = (req, res) => {
     const length = end.getTime() - start.getTime();
     const elapsed = length - (end.getTime() - now.getTime());
     const progress = Math.min(99, Math.round(elapsed / length * 100));
-    const days = Math.ceil(elapsed / 86400000);
+    const dayNumber = Math.ceil(elapsed / 86400000);
+    const weekNumber = Math.ceil(elapsed / 604800000);
 
     const titleFrame = {
         text: 'UK Lockdown',
@@ -63,8 +64,14 @@ module.exports = (req, res) => {
         index: null
     };
 
-    const totalFrame = {
-        text: `Day ${days}`,
+    const dayNumberFrame = {
+        text: `Day ${dayNumber}`,
+        icon: 'a36057',
+        index: null
+    };
+
+    const weekNumberFrame = {
+        text: `Week ${weekNumber}`,
         icon: 'a36057',
         index: null
     };
@@ -74,19 +81,24 @@ module.exports = (req, res) => {
     };
 
     if (req.query.display) {
-        if (req.query.display.includes('Title')) {
+        const displayOptions = req.query.display.replace('%20', ' ').split(',');
+
+        if (displayOptions.includes('Title')) {
             lametricResponse.frames.push(titleFrame);
         }
-        if (req.query.display.includes('Day')) {
+        if (displayOptions.includes('Day') || displayOptions.includes('Emoji day')) {
             // TODO worry about daylight savings?
             const day = now.getUTCDay();
             lametricResponse.frames.push(dayFrames[day]);
         }
-        if (req.query.display.includes('Progress')) {
+        if (displayOptions.includes('Progress')) {
             lametricResponse.frames.push(progressFrame);
         }
-        if (req.query.display.includes('Total')) {
-            lametricResponse.frames.push(totalFrame);
+        if (displayOptions.includes('Total') || displayOptions.includes('Day number')) {
+            lametricResponse.frames.push(dayNumberFrame);
+        }
+        if (displayOptions.includes('Week number')) {
+            lametricResponse.frames.push(weekNumberFrame);
         }
     }
     
