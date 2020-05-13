@@ -1,4 +1,5 @@
 module.exports = (req, res) => {
+    const alertLevel = 4;
     const start = new Date('March 24, 2020 00:00:00');
     const end = new Date('May 29, 2020 00:00:00');
     const now = new Date();
@@ -76,6 +77,34 @@ module.exports = (req, res) => {
         index: null
     };
 
+    const alertFrames = [
+        {
+            text: 'Low',
+            icon: 'i37495',
+            index: null
+        },
+        {
+            text: 'Moderate',
+            icon: 'i37494',
+            index: null
+        },
+        {
+            text: 'Substantial',
+            icon: 'i37493',
+            index: null
+        },
+        {
+            text: 'Severe',
+            icon: 'i37492',
+            index: null
+        },
+        {
+            text: 'Critical',
+            icon: 'i37491',
+            index: null
+        }
+    ];
+
     const lametricResponse = {
         frames: []
     };
@@ -99,6 +128,9 @@ module.exports = (req, res) => {
         }
         if (displayOptions.includes('Week number')) {
             lametricResponse.frames.push(weekNumberFrame);
+        }
+        if (displayOptions.includes('Alert level')) {
+            lametricResponse.frames.push(alertFrames[alertLevel - 1]);
         }
     }
     
