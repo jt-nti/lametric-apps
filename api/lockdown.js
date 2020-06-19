@@ -1,7 +1,7 @@
 module.exports = (req, res) => {
     const alertLevel = 4;
     const start = new Date('March 24, 2020 00:00:00');
-    const end = new Date('June 19, 2020 00:00:00');
+    const end = new Date('June 26, 2020 00:00:00');
     const now = new Date();
 
     const length = end.getTime() - start.getTime();
