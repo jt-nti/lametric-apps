@@ -1,7 +1,7 @@
 module.exports = (req, res) => {
     const alertLevel = 4;
     const start = new Date('March 24, 2020 00:00:00');
-    const end = new Date('December 25, 2020 00:00:00');
+    const end = new Date('December 02, 2020 00:01:00');
     const now = new Date();
 
     const length = end.getTime() - start.getTime();
@@ -10,7 +10,34 @@ module.exports = (req, res) => {
     const dayNumber = Math.ceil(elapsed / 86400000);
     const weekNumber = Math.ceil(elapsed / 604800000);
 
-    const titleFrame = {
+    // English lockdown 2
+    const engStart = new Date('November 05, 2020 00:01:00');
+    const engEnd = new Date('December 02, 2020 00:01:00');
+    const engLength = engEnd.getTime() - engStart.getTime();
+    const engElapsed = engLength - (engEnd.getTime() - now.getTime());
+    const engProgress = Math.min(99, Math.round(engElapsed / engLength * 100));
+    const engDay = Math.ceil(engElapsed / 86400000);
+    const engWeek = Math.ceil(engElapsed / 604800000);
+
+    // NI circuit breaker
+    const nirStart = new Date('October 16, 2020 00:01:00');
+    const nirEnd = new Date('November 13, 2020 00:01:00');
+    const nirLength = nirEnd.getTime() - nirStart.getTime();
+    const nirElapsed = nirLength - (nirEnd.getTime() - now.getTime());
+    const nirProgress = Math.min(99, Math.round(nirElapsed / nirLength * 100));
+    const nirDay = Math.ceil(nirElapsed / 86400000);
+    const nirWeek = Math.ceil(nirElapsed / 604800000);
+
+    // Welsh firebreak
+    const wlsStart = new Date('October 23, 2020 18:00:00');
+    const wlsEnd = new Date('November 09, 2020 00:01:00');
+    const wlsLength = wlsEnd.getTime() - wlsStart.getTime();
+    const wlsElapsed = wlsLength - (wlsEnd.getTime() - now.getTime());
+    const wlsProgress = Math.min(99, Math.round(wlsElapsed / wlsLength * 100));
+    const wlsDay = Math.ceil(wlsElapsed / 86400000);
+    const wlsWeek = Math.ceil(wlsElapsed / 604800000);
+
+    let titleFrame = {
         text: 'UK Lockdown',
         icon: 'a36057',
         index: null
@@ -54,7 +81,7 @@ module.exports = (req, res) => {
         }
     ];
 
-    const progressFrame = {
+    let progressFrame = {
         goalData: {
             start: 0,
             current: progress,
@@ -65,13 +92,13 @@ module.exports = (req, res) => {
         index: null
     };
 
-    const dayNumberFrame = {
+    let dayNumberFrame = {
         text: `Day ${dayNumber}`,
         icon: 'a36057',
         index: null
     };
 
-    const weekNumberFrame = {
+    let weekNumberFrame = {
         text: `Week ${weekNumber}`,
         icon: 'a36057',
         index: null
@@ -108,6 +135,27 @@ module.exports = (req, res) => {
     const lametricResponse = {
         frames: []
     };
+
+    if (req.query.lockdown) {
+        const lockdownOption = req.query.lockdown.replace('%20', ' ');
+
+        if (lockdownOption.includes('English lockdown2')) {
+            titleFrame.text = 'English lockdown2';
+            progressFrame.goalData.current = engProgress;
+            dayNumberFrame.text = `Day ${engDay}`;
+            weekNumberFrame.text = `Week ${engWeek}`;
+        } else if (lockdownOption.includes('NI circuit breaker')) {
+            titleFrame.text = 'NI circuit breaker';
+            progressFrame.goalData.current = nirProgress;
+            dayNumberFrame.text = `Day ${nirDay}`;
+            weekNumberFrame.text = `Week ${nirWeek}`;
+        } else if (lockdownOption.includes('Welsh firebreak')) {
+            titleFrame.text = 'Welsh firebreak';
+            progressFrame.goalData.current = wlsProgress;
+            dayNumberFrame.text = `Day ${wlsDay}`;
+            weekNumberFrame.text = `Week ${wlsWeek}`;
+        }
+    }
 
     if (req.query.display) {
         const displayOptions = req.query.display.replace('%20', ' ').split(',');
