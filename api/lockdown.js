@@ -29,13 +29,13 @@ module.exports = (req, res) => {
     const nirWeek = Math.ceil(nirElapsed / 604800000);
 
     // Welsh firebreak
-    const wlsStart = new Date('October 23, 2020 18:00:00');
-    const wlsEnd = new Date('November 09, 2020 00:01:00');
-    const wlsLength = wlsEnd.getTime() - wlsStart.getTime();
-    const wlsElapsed = wlsLength - (wlsEnd.getTime() - now.getTime());
-    const wlsProgress = Math.min(99, Math.round(wlsElapsed / wlsLength * 100));
-    const wlsDay = Math.ceil(wlsElapsed / 86400000);
-    const wlsWeek = Math.ceil(wlsElapsed / 604800000);
+    // const wlsStart = new Date('October 23, 2020 18:00:00');
+    // const wlsEnd = new Date('November 09, 2020 00:01:00');
+    // const wlsLength = wlsEnd.getTime() - wlsStart.getTime();
+    // const wlsElapsed = wlsLength - (wlsEnd.getTime() - now.getTime());
+    const wlsProgress = 100;
+    const wlsDay = '--';
+    const wlsWeek = '--';
 
     let titleFrame = {
         text: 'UK Lockdown',
