@@ -21,7 +21,7 @@ module.exports = (req, res) => {
 
     // NI circuit breaker
     const nirStart = new Date('October 16, 2020 00:01:00');
-    const nirEnd = new Date('November 13, 2020 00:01:00');
+    const nirEnd = new Date('November 27, 2020 00:01:00');
     const nirLength = nirEnd.getTime() - nirStart.getTime();
     const nirElapsed = nirLength - (nirEnd.getTime() - now.getTime());
     const nirProgress = Math.min(99, Math.round(nirElapsed / nirLength * 100));
