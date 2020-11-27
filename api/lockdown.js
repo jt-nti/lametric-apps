@@ -1,7 +1,7 @@
 module.exports = (req, res) => {
     const alertLevel = 4;
     const start = new Date('March 24, 2020 00:00:00');
-    const end = new Date('December 02, 2020 00:01:00');
+    const end = new Date('April 02, 2021 00:01:00');
     const now = new Date();
 
     const length = end.getTime() - start.getTime();
@@ -15,13 +15,13 @@ module.exports = (req, res) => {
     const engEnd = new Date('December 02, 2020 00:01:00');
     const engLength = engEnd.getTime() - engStart.getTime();
     const engElapsed = engLength - (engEnd.getTime() - now.getTime());
-    const engProgress = Math.min(99, Math.round(engElapsed / engLength * 100));
+    const engProgress = Math.min(100, Math.round(engElapsed / engLength * 100));
     const engDay = Math.ceil(engElapsed / 86400000);
     const engWeek = Math.ceil(engElapsed / 604800000);
 
     // NI circuit breaker
     const nirStart = new Date('October 16, 2020 00:01:00');
-    const nirEnd = new Date('November 27, 2020 00:01:00');
+    const nirEnd = new Date('December 10, 2020 23:59:00');
     const nirLength = nirEnd.getTime() - nirStart.getTime();
     const nirElapsed = nirLength - (nirEnd.getTime() - now.getTime());
     const nirProgress = Math.min(99, Math.round(nirElapsed / nirLength * 100));
