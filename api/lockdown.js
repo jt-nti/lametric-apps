@@ -1,7 +1,7 @@
 module.exports = (req, res) => {
     const alertLevel = 4;
     const start = new Date('March 24, 2020 00:00:00');
-    const end = new Date('April 02, 2021 00:01:00');
+    const end = new Date('February 03, 2021 00:01:00');
     const now = new Date();
 
     const length = end.getTime() - start.getTime();
@@ -11,13 +11,13 @@ module.exports = (req, res) => {
     const weekNumber = Math.ceil(elapsed / 604800000);
 
     // English lockdown 2
-    const engStart = new Date('November 05, 2020 00:01:00');
-    const engEnd = new Date('December 02, 2020 00:01:00');
-    const engLength = engEnd.getTime() - engStart.getTime();
-    const engElapsed = engLength - (engEnd.getTime() - now.getTime());
-    const engProgress = Math.min(100, Math.round(engElapsed / engLength * 100));
-    const engDay = Math.ceil(engElapsed / 86400000);
-    const engWeek = Math.ceil(engElapsed / 604800000);
+    // const engStart = new Date('November 05, 2020 00:01:00');
+    // const engEnd = new Date('December 02, 2020 00:01:00');
+    // const engLength = engEnd.getTime() - engStart.getTime();
+    // const engElapsed = engLength - (engEnd.getTime() - now.getTime());
+    const engProgress = 100;
+    const engDay = '--';
+    const engWeek = '--';
 
     // NI circuit breaker
     const nirStart = new Date('October 16, 2020 00:01:00');
