@@ -20,13 +20,13 @@ module.exports = (req, res) => {
     const engWeek = '--';
 
     // NI circuit breaker
-    const nirStart = new Date('October 16, 2020 00:01:00');
-    const nirEnd = new Date('December 10, 2020 23:59:00');
-    const nirLength = nirEnd.getTime() - nirStart.getTime();
-    const nirElapsed = nirLength - (nirEnd.getTime() - now.getTime());
-    const nirProgress = Math.min(99, Math.round(nirElapsed / nirLength * 100));
-    const nirDay = Math.ceil(nirElapsed / 86400000);
-    const nirWeek = Math.ceil(nirElapsed / 604800000);
+    // const nirStart = new Date('October 16, 2020 00:01:00');
+    // const nirEnd = new Date('December 10, 2020 23:59:00');
+    // const nirLength = nirEnd.getTime() - nirStart.getTime();
+    // const nirElapsed = nirLength - (nirEnd.getTime() - now.getTime());
+    const nirProgress = 100;
+    const nirDay = '--';
+    const nirWeek = '--';
 
     // Welsh firebreak
     // const wlsStart = new Date('October 23, 2020 18:00:00');
