@@ -1,5 +1,6 @@
 module.exports = (req, res) => {
     const alertLevel = 4;
+    const stepNumber = 1;
     const start = new Date('March 24, 2020 00:00:00');
     const end = new Date('June 21, 2021 00:00:00');
     const now = new Date();
@@ -9,6 +10,8 @@ module.exports = (req, res) => {
     const progress = Math.min(99, Math.round(elapsed / length * 100));
     const dayNumber = Math.ceil(elapsed / 86400000);
     const weekNumber = Math.ceil(elapsed / 604800000);
+
+    const marchDay = dayNumber + 23;
 
     // English lockdown 2
     // const engStart = new Date('November 05, 2020 00:01:00');
@@ -132,6 +135,18 @@ module.exports = (req, res) => {
         }
     ];
 
+    let stepFrame = {
+        text: `Step ${stepNumber}`,
+        icon: 'a36057',
+        index: null
+    };
+
+    let eternalMarchFrame = {
+        text: `${marchDay} Mar`,
+        icon: null,
+        index: null
+    };
+
     const lametricResponse = {
         frames: []
     };
@@ -179,6 +194,12 @@ module.exports = (req, res) => {
         }
         if (displayOptions.includes('Alert level')) {
             lametricResponse.frames.push(alertFrames[alertLevel - 1]);
+        }
+        if (displayOptions.includes('Current step')) {
+            lametricResponse.frames.push(stepFrame);
+        }
+        if (displayOptions.includes('Eternal March')) {
+            lametricResponse.frames.push(eternalMarchFrame);
         }
     }
     

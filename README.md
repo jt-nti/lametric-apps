@@ -18,4 +18,8 @@ The most random collection of UK lockdown information available anywhere.
 
 ● Stay alert with the current COVID Alert Level!
 
-● *New in version 9* Choice of lockdowns!
+● Choice of lockdowns!
+
+● *New in version 10* Step number!
+
+● *New in version 10* Eternal March!
