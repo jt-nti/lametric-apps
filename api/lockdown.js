@@ -1,6 +1,6 @@
 module.exports = (req, res) => {
     const alertLevel = 3;
-    const stepNumber = 3;
+    const stepNumber = 4;
     const start = new Date('March 24, 2020 00:00:00');
     const end = new Date('July 19, 2021 00:00:00');
     const now = new Date();
